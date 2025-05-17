@@ -16,8 +16,26 @@ namespace DesafioFundamentos.Models
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
-            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            string? resultado;
+            do
+            {
+                Console.WriteLine("Digite a placa do veículo para estacionar:");
+                string placa = (Console.ReadLine() ?? "").ToUpper().Replace("-", "").Trim();
+                resultado = ValidarPlaca(placa);
+
+                if (resultado != "Placa válida")
+                {
+                    Console.WriteLine("Pressione uma tecla para tentar novamente...");
+                    Console.ReadKey();
+                    Console.Clear();
+                }
+                else
+                {
+                    veiculos.Add(placa);
+                }
+            } while (resultado != "Placa válida");
         }
+
 
         public void RemoverVeiculo()
         {
