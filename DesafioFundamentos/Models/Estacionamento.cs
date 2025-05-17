@@ -36,7 +36,7 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 // *IMPLEMENTE AQUI*
                 int horas = 0;
-                decimal valorTotal = 0; 
+                decimal valorTotal = 0;
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
@@ -62,6 +62,33 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
+        }
+        
+        /// <summary>
+        /// Valida uma placa de veículo no padrão Mercosul.
+        /// </summary>
+        /// <param name="placa">Representa a placa do veículo no formato ABC1D23</param>
+        /// <returns>
+        /// Mensagem indicando o resultado da validação:
+        /// - "Placa válida", se estiver no formato correto;
+        /// - Mensagens de erro específicas caso a placa esteja nula, com tamanho incorreto ou fora do padrão esperado.
+        /// </returns>
+        public string ValidarPlaca(string placa)
+        {
+            if (string.IsNullOrWhiteSpace(placa))
+                return "A placa não pode ser nula ou vazia.";
+
+            if (placa.Length != 7)
+                return "A placa deve conter exatamente 7 caracteres.";
+
+
+            int[] letras = new int[] { 0, 1, 2, 4 };
+            int[] digitos = new int[] { 3, 5, 6 };
+            if (!letras.All(i => char.IsLetter(placa[i])) ||
+            !digitos.All(i => char.IsDigit(placa[i]))
+            )
+                return "Formato inválido. Confira o formato da placa: ABC1D23";
+            return "Placa válida";
         }
     }
 }
