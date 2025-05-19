@@ -32,6 +32,7 @@ while (exibirMenu)
     switch (Console.ReadLine())
     {
         case "1":
+            Console.Clear();
             es.AdicionarVeiculo();
             break;
 
@@ -40,6 +41,7 @@ while (exibirMenu)
             break;
 
         case "3":
+            Console.Clear();
             es.ListarVeiculos();
             break;
 

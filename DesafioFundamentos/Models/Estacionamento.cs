@@ -22,6 +22,7 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Digite a placa do veículo para estacionar:");
                 string placa = (Console.ReadLine() ?? "").ToUpper().Replace("-", "").Trim();
                 resultado = ValidarPlaca(placa);
+                Console.WriteLine(resultado);
 
                 if (resultado != "Placa válida")
                 {
@@ -75,13 +76,17 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Os veículos estacionados são:");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
                 // *IMPLEMENTE AQUI*
+                foreach (string veiculo in veiculos)
+                {
+                    Console.WriteLine(veiculo);
+                }
             }
             else
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
         }
-        
+
         /// <summary>
         /// Valida uma placa de veículo no padrão Mercosul.
         /// </summary>
