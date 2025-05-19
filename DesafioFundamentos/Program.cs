@@ -37,6 +37,7 @@ while (exibirMenu)
             break;
 
         case "2":
+            Console.Clear();
             es.RemoverVeiculo();
             break;
 
